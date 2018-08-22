@@ -24,7 +24,5 @@
         {
             _pdfBase.PdfEnviar();
         }
-    
-        
     }
 }
