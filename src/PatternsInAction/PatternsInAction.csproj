@@ -50,9 +50,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Comportamiento\MementoPattern\MementoPattern.csproj">
-      <Project>{8F54699C-FD2E-4D58-BEAC-9A61CC345AEF}</Project>
-      <Name>MementoPattern</Name>
+    <ProjectReference Include="..\Comportamiento\InterpreterPattern\InterpreterPattern.csproj">
+      <Project>{0AA7F734-300E-4EF9-82C0-644D9E3AD4BE}</Project>
+      <Name>InterpreterPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comportamiento\IteratorPattern\IteratorPattern.csproj">
+      <Project>{136294FD-A7C5-4B0F-886A-50F0F27D2602}</Project>
+      <Name>IteratorPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comportamiento\MediatorPattern\MediatorPattern.csproj">
+      <Project>{F2345C85-932E-46B1-AFDB-8B9B259964B1}</Project>
+      <Name>MediatorPattern</Name>
     </ProjectReference>
     <ProjectReference Include="..\Comportamiento\ObserverPattern\ObserverPattern.csproj">
       <Project>{5D80B839-DDB6-4120-8209-F4576C662314}</Project>
@@ -73,6 +81,10 @@
     <ProjectReference Include="..\Comportamiento\VisitorPattern\VisitorPattern.csproj">
       <Project>{C3265705-6AE3-45EF-BCF1-09E651DE66BA}</Project>
       <Name>VisitorPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Estructura\AdapterPattern\AdapterPattern.csproj">
+      <Project>{64B5B9C3-45D3-47BC-AFC4-12F0E9BC335C}</Project>
+      <Name>AdapterPattern</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

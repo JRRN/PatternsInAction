@@ -1,10 +1,13 @@
-﻿using System;
-using MementoPattern;
+﻿using MediatorPattern;
 using ObserverPattern;
 using StatePattern;
 using StrategyPattern;
+using System;
+using AdapterPattern;
+using IteratorPattern;
 using TemplateMethodPattern;
 using VisitorPattern;
+using InterpreterPattern;
 
 
 namespace PatternsInAction
@@ -19,7 +22,12 @@ namespace PatternsInAction
             Console.WriteLine(); StatePattern();
             Console.WriteLine(); StrategyPattern();
             Console.WriteLine(); Observer();
-            Console.WriteLine(); Memento();
+            //Console.WriteLine(); Memento();
+            //Console.WriteLine(); Mediator();
+            //Console.WriteLine(); Iterator();
+
+            //Console.WriteLine(); Interpreter();
+            Console.WriteLine();Adapter();
             Console.ReadLine();
         }
 
@@ -112,25 +120,88 @@ namespace PatternsInAction
             book.Descripcion = "Libro de IT Muy Barato";
             bookView2.Imprime();
         }
+        //private static void Memento()
+        //{
+        //    IMemento memento;
 
-        private static void Memento()
+        //    OpcionBook op1 = new OpcionBook("Tapa dura");
+        //    OpcionBook op2 = new OpcionBook("Tapa Blanda");
+        //    OpcionBook op3 = new OpcionBook("Tapa Encuadernado");
+
+        //    op1.AgregaOpcionIncompatible(op3);
+        //    op2.AgregaOpcionIncompatible(op3);
+
+        //    CompraOpciones compraOpciones = new CompraOpciones();
+        //    compraOpciones.AgregaOpciones(op1);
+        //    compraOpciones.AgregaOpciones(op2);
+        //    compraOpciones.Visualiza();
+
+        //    compraOpciones.Anula(memento);
+        //    compraOpciones.Visualiza();
+        //}
+
+        private static void Mediator()
         {
-            IMemento memento;
+            TorreDeControl torreControl = new TorreDeControl();
+            new Productor(torreControl).Run();
+            new Productor(torreControl).Run();
+            new Consumidor(torreControl).Run();
+            new Consumidor(torreControl).Run();
+            new Consumidor(torreControl).Run();
+            new Consumidor(torreControl).Run();
+        }
 
-            OpcionBook op1 = new OpcionBook("Tapa dura");
-            OpcionBook op2 = new OpcionBook("Tapa Blanda");
-            OpcionBook op3 = new OpcionBook("Tapa Encuadernado");
+        //private static void Iterator()
+        //{
+        //    CatalogoBook catalogo = new CatalogoBook();
+        //    IteradorBook iterador = catalogo.Busqueda("PDF");
+        //    BookIterator libro;
+        //    iterador.Inicio();
+        //    libro = iterador.item();
+        //    while (libro != null)
+        //    {
+        //        libro.Visualiza();
+        //        iterador.Siguiente();
+        //        libro = iterador.item();
+        //    }
+        //}
 
-            op1.AgregaOpcionIncompatible(op3);
-            op2.AgregaOpcionIncompatible(op3);
+        //private static void Interpreter()
+        //{
+        //    Expresion expresionConsulta = null;
+        //    Console.Write("Introduzca su consulta: ");
+        //    string consulta = Console.ReadLine();
+        //    try
+        //    {
+        //        expresionConsulta = Expresion.Analiza(consulta);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //        expresionConsulta = null;
+        //    }
+        //    if (expresionConsulta != null)
+        //    {
+        //        Console.WriteLine("Introduzca la descripción de un libro: ");
+        //        string descripcion = Console.ReadLine();
+        //        Console.WriteLine(expresionConsulta.Evalua(descripcion)
+        //            ? "La descripción responde a la consulta"
+        //            : "La descripción no responde a la consulta");
+        //    }
+        //}
 
-            CompraOpciones compraOpciones = new CompraOpciones();
-            compraOpciones.AgregaOpciones(op1);
-            compraOpciones.AgregaOpciones(op2);
-            compraOpciones.Visualiza();
 
-            compraOpciones.Anula(memento);
-            compraOpciones.Visualiza();
+        private static void Adapter()
+        {
+            IBookAdapter paperBook = new PaperBook { Contenido = "Soy un libro físico"};
+            paperBook.Compone();
+            paperBook.Imprime();
+            paperBook.Enviar();
+
+            IBookAdapter mediaBook = new PdfBook {Contenido = "Soy un libro digital"};
+            mediaBook.Compone();
+            mediaBook.Imprime();
+            mediaBook.Enviar();
         }
     }
 }
