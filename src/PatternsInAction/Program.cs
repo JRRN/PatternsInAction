@@ -4,10 +4,17 @@ using StatePattern;
 using StrategyPattern;
 using System;
 using AdapterPattern;
+using BridgePattern;
 using IteratorPattern;
 using TemplateMethodPattern;
 using VisitorPattern;
 using InterpreterPattern;
+using BridgePattern;
+//using CompositePattern;
+using DecoratorPattern;
+using FacadePattern;
+using FlyweightPattern;
+using TipoLibroEnum = BridgePattern.TipoLibroEnum;
 
 
 namespace PatternsInAction
@@ -28,6 +35,13 @@ namespace PatternsInAction
 
             //Console.WriteLine(); Interpreter();
             Console.WriteLine();Adapter();
+            Console.WriteLine(); Bridge();
+            //Console.WriteLine(); Composite();
+            Console.WriteLine(); Decorator();
+            Console.WriteLine(); Facade();
+            Console.WriteLine(); Flyweight();
+            //Console.WriteLine(); Proxy();
+
             Console.ReadLine();
         }
 
@@ -193,7 +207,7 @@ namespace PatternsInAction
 
         private static void Adapter()
         {
-            IBookAdapter paperBook = new PaperBook { Contenido = "Soy un libro físico"};
+            IBookAdapter paperBook = new AdapterPattern.PaperBook { Contenido = "Soy un libro físico"};
             paperBook.Compone();
             paperBook.Imprime();
             paperBook.Enviar();
@@ -203,5 +217,81 @@ namespace PatternsInAction
             mediaBook.Imprime();
             mediaBook.Enviar();
         }
+
+        private static void Bridge()
+        {
+            GeneradorLibroElectronico libroElectronico = new GeneradorLibroElectronico(new BridgePattern.MediaBook());
+
+            Console.WriteLine(libroElectronico._tipoLibroEnum);
+            if (libroElectronico.TipoDeLibro() == TipoLibroEnum.Media)
+            {
+                libroElectronico.Genera();
+            }
+
+            GeneradorLibroPapel libroPapel = new GeneradorLibroPapel(new BridgePattern.PaperBook());
+
+            Console.WriteLine(libroPapel._tipoLibroEnum);
+            if (libroPapel.TipoDeLibro() == TipoLibroEnum.Paper)
+            {
+                libroPapel.Genera();
+            }
+        }
+
+        //private static void Composite()
+        //{
+        //    Cliente clienteFinal = new ClienteFinal();
+        //    clienteFinal.AgregarEditorial("Cliente Final 1");
+
+        //    Cliente otroClienteFinal = new ClienteFinal();
+        //    otroClienteFinal.AgregarEditorial("Cliente Final 2");
+        //    otroClienteFinal.AnadirLibro();
+
+        //    EditorialCliente editorialCliente = new EditorialCliente();
+        //    editorialCliente.AgregarEditorial(clienteFinal);
+        //    editorialCliente.AgregarEditorial(otroClienteFinal);
+        //    editorialCliente.AnadirLibro();
+
+        //    Console.WriteLine($"Total pedidos clientes: { editorialCliente.CalcularPedido() }");
+        //}
+
+        private static void Decorator()
+        {
+            DecoratorPattern.Books libro = new DecoratorPattern.Books();
+            EditorialTecnologicaDecorador editorialTechlDecorador = new EditorialTecnologicaDecorador(libro);
+            AutorTecnologicoDecorador autorTechDecorador = new AutorTecnologicoDecorador(libro);
+            autorTechDecorador.VerCatalogo();
+            editorialTechlDecorador.VerCatalogo();
+        }
+
+        private static void Facade()
+        {
+            IFacadeService _facade = new FacadeService();
+
+            _facade.GetCatalogo();
+            
+            _facade.GetBookById(Guid.NewGuid());
+
+            _facade.GetPedidoById(Guid.NewGuid());
+        }
+
+        private static void Flyweight()
+        {
+            DeterminaOpcion opcion = new DeterminaOpcion();
+            LibroPedido libroPedido = new LibroPedido();
+
+            libroPedido.agregaOpcionLibro(FlyweightPattern.TipoLibroEnum.Anillas, 10, opcion);
+            libroPedido.agregaOpcionLibro(FlyweightPattern.TipoLibroEnum.Encolado, 30, opcion);
+
+            libroPedido.MuestraOpciones();
+        }
+
+        //private static void Proxy()
+        //{
+        //    IBook book = new DescripcionProxy();
+
+        //    book.Renderiza();
+        //    book.CargaDescripcion();
+        //    book.Renderiza();
+        //}
     }
 }

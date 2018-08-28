@@ -86,6 +86,22 @@
       <Project>{64B5B9C3-45D3-47BC-AFC4-12F0E9BC335C}</Project>
       <Name>AdapterPattern</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Estructura\BridgePattern\BridgePattern.csproj">
+      <Project>{16E2825A-4C6A-483B-B093-40A968EC307A}</Project>
+      <Name>BridgePattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Estructura\DecoratorPattern\DecoratorPattern.csproj">
+      <Project>{A3B01DD7-BFE3-4089-84C1-764E5E53E461}</Project>
+      <Name>DecoratorPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Estructura\FacadePattern\FacadePattern.csproj">
+      <Project>{58ECBFB2-A1A8-4309-9F32-FC666F9A1EE5}</Project>
+      <Name>FacadePattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Estructura\FlyweightPattern\FlyweightPattern.csproj">
+      <Project>{C99B66F8-4190-483E-B0BA-3D6DA1BDE3C7}</Project>
+      <Name>FlyweightPattern</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
