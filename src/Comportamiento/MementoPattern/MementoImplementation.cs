@@ -4,17 +4,17 @@ namespace MementoPattern
 {
     public class MementoImplementation : IMemento
     {
-        protected IList<OpcionBook> bookOptions = new List<OpcionBook>();
+        protected IList<OpcionBook> _bookOptions = new List<OpcionBook>();
 
         public IList<OpcionBook> State
         {
-            get => bookOptions;
+            get => _bookOptions;
             set
             {
-                bookOptions.Clear();
+                _bookOptions.Clear();
                 foreach (OpcionBook bookOption in value)
                 {
-                    bookOptions.Add(bookOption);
+                    _bookOptions.Add(bookOption);
                 }
             }
         }

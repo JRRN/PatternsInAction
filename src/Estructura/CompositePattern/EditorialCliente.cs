@@ -2,7 +2,7 @@
 
 namespace CompositePattern
 {
-    public class EditorialCliente : Cliente
+    public  class EditorialCliente : Cliente
     {
         protected List<Cliente> _clientesEditorial = new List<Cliente>();
 

@@ -6,9 +6,7 @@ namespace IteratorPattern
     {
         public BookIterator(string descripcion) : base(descripcion) { }
 
-        public void Visualiza()
-        {
-            Console.WriteLine($"Descripción del Libro: { _descripcion}");
-        }
+        public void Visualiza() 
+            => Console.WriteLine($"Descripción del Libro: { _descripcion}");
     }
 }

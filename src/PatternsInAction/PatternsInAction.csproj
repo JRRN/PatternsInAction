@@ -58,9 +58,9 @@
       <Project>{136294FD-A7C5-4B0F-886A-50F0F27D2602}</Project>
       <Name>IteratorPattern</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Comportamiento\MediatorPattern\MediatorPattern.csproj">
-      <Project>{F2345C85-932E-46B1-AFDB-8B9B259964B1}</Project>
-      <Name>MediatorPattern</Name>
+    <ProjectReference Include="..\Comportamiento\MementoPattern\MementoPattern.csproj">
+      <Project>{8F54699C-FD2E-4D58-BEAC-9A61CC345AEF}</Project>
+      <Name>MementoPattern</Name>
     </ProjectReference>
     <ProjectReference Include="..\Comportamiento\ObserverPattern\ObserverPattern.csproj">
       <Project>{5D80B839-DDB6-4120-8209-F4576C662314}</Project>
@@ -101,6 +101,10 @@
     <ProjectReference Include="..\Estructura\BridgePattern\BridgePattern.csproj">
       <Project>{16E2825A-4C6A-483B-B093-40A968EC307A}</Project>
       <Name>BridgePattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Estructura\CompositePattern\CompositePattern.csproj">
+      <Project>{792F5C28-5924-47F7-8FB3-60189F21C1B7}</Project>
+      <Name>CompositePattern</Name>
     </ProjectReference>
     <ProjectReference Include="..\Estructura\DecoratorPattern\DecoratorPattern.csproj">
       <Project>{A3B01DD7-BFE3-4089-84C1-764E5E53E461}</Project>

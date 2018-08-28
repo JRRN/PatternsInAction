@@ -1,4 +1,4 @@
-﻿using MediatorPattern;
+﻿//using MediatorPattern;
 using ObserverPattern;
 using StatePattern;
 using StrategyPattern;
@@ -11,11 +11,13 @@ using VisitorPattern;
 using InterpreterPattern;
 using BridgePattern;
 using BuilderPattern;
+using CompositePattern;
 //using CompositePattern;
 using DecoratorPattern;
 using FacadePattern;
 using FactoryMethodPattern;
 using FlyweightPattern;
+using MementoPattern;
 using PrototypePattern;
 using Pedido = TemplateMethodPattern.Pedido;
 using TipoLibroEnum = BridgePattern.TipoLibroEnum;
@@ -28,27 +30,27 @@ namespace PatternsInAction
         static void Main(string[] args)
         {
             VisitorPattern();
-            Console.WriteLine(); TemplateMethodPattern();
+            Console.WriteLine("Template Method Pattern"); TemplateMethodPattern();
 
-            Console.WriteLine(); StatePattern();
-            Console.WriteLine(); StrategyPattern();
-            Console.WriteLine(); Observer();
-            //Console.WriteLine(); Memento();
-            //Console.WriteLine(); Mediator();
-            //Console.WriteLine(); Iterator();
+            Console.WriteLine("State Patterns"); StatePattern();
+            Console.WriteLine("Strategy Pattern"); StrategyPattern();
+            Console.WriteLine("Observer Pattern"); Observer();
+            Console.WriteLine("Memento Pattern"); Memento();
+            //Console.WriteLine("Mediator Pattern"); Mediator();
+            Console.WriteLine("Iterator Pattern"); Iterator();
 
-            Console.WriteLine(); Interpreter();
-            Console.WriteLine();Adapter();
-            Console.WriteLine(); Bridge();
-            //Console.WriteLine(); Composite();
-            Console.WriteLine(); Decorator();
-            Console.WriteLine(); Facade();
-            Console.WriteLine(); Flyweight();
-            //Console.WriteLine(); Proxy();
-            //Console.WriteLine(); Singleton();
-            Console.WriteLine(); Builder();
-            Console.WriteLine(); FactoryMethod();
-            Console.WriteLine(); Prototype();
+            Console.WriteLine("Interpreter Pattern"); Interpreter();
+            Console.WriteLine("Adapter Pattern");Adapter();
+            Console.WriteLine("Bridge Pattern"); Bridge();
+            Console.WriteLine("Composite Pattern"); Composite();
+            Console.WriteLine("Decorator Pattern"); Decorator();
+            Console.WriteLine("Facade Pattern"); Facade();
+            Console.WriteLine("Flyweight Pattern"); Flyweight();
+            //Console.WriteLine("Proxy Pattern"); Proxy();
+            //Console.WriteLine("Singleton Pattern"); Singleton();
+            Console.WriteLine("Builder Pattern"); Builder();
+            Console.WriteLine("Factory Method Pattern"); FactoryMethod();
+            Console.WriteLine("Prototype Pattern"); Prototype();
 
             Console.ReadLine();
         }
@@ -192,51 +194,51 @@ namespace PatternsInAction
             book.Descripcion = "Libro de IT Muy Barato";
             bookView2.Imprime();
         }
-        //private static void Memento()
-        //{
-        //    IMemento memento;
+        private static void Memento()
+        {
+            OpcionBook op1 = new OpcionBook("Tapa dura");
+            OpcionBook op2 = new OpcionBook("Tapa Blanda");
+            OpcionBook op3 = new OpcionBook("Tapa Encuadernado");
 
-        //    OpcionBook op1 = new OpcionBook("Tapa dura");
-        //    OpcionBook op2 = new OpcionBook("Tapa Blanda");
-        //    OpcionBook op3 = new OpcionBook("Tapa Encuadernado");
+            op1.AgregaOpcionIncompatible(op3);
+            op2.AgregaOpcionIncompatible(op3);
 
-        //    op1.AgregaOpcionIncompatible(op3);
-        //    op2.AgregaOpcionIncompatible(op3);
+            CompraOpciones compraOpciones = new CompraOpciones();
+            compraOpciones.AgregaOpciones(op1);
+            compraOpciones.AgregaOpciones(op2);
+            compraOpciones.Visualiza();
 
-        //    CompraOpciones compraOpciones = new CompraOpciones();
-        //    compraOpciones.AgregaOpciones(op1);
-        //    compraOpciones.AgregaOpciones(op2);
-        //    compraOpciones.Visualiza();
-
-        //    compraOpciones.Anula(memento);
-        //    compraOpciones.Visualiza();
-        //}
+            var memento = compraOpciones.AgregaOpciones(op3);
+            compraOpciones.Visualiza();
+            compraOpciones.Anula(memento);
+            compraOpciones.Visualiza();
+        }
 
         private static void Mediator()
         {
-            TorreDeControl torreControl = new TorreDeControl();
-            new Productor(torreControl).Run();
-            new Productor(torreControl).Run();
-            new Consumidor(torreControl).Run();
-            new Consumidor(torreControl).Run();
-            new Consumidor(torreControl).Run();
-            new Consumidor(torreControl).Run();
+            //TorreDeControl torreControl = new TorreDeControl();
+            //new Productor(torreControl).Run();
+            //new Productor(torreControl).Run();
+            //new Consumidor(torreControl).Run();
+            //new Consumidor(torreControl).Run();
+            //new Consumidor(torreControl).Run();
+            //new Consumidor(torreControl).Run();
         }
 
-        //private static void Iterator()
-        //{
-        //    CatalogoBook catalogo = new CatalogoBook();
-        //    IteradorBook iterador = catalogo.Busqueda("PDF");
-        //    BookIterator libro;
-        //    iterador.Inicio();
-        //    libro = iterador.item();
-        //    while (libro != null)
-        //    {
-        //        libro.Visualiza();
-        //        iterador.Siguiente();
-        //        libro = iterador.item();
-        //    }
-        //}
+        private static void Iterator()
+        {
+            CatalogoBook catalogo = new CatalogoBook();
+            IteradorBook iterador = catalogo.Busqueda("PDF");
+            BookIterator libro;
+            iterador.Inicio();
+            libro = iterador.item();
+            while (libro != null)
+            {
+                libro.Visualiza();
+                iterador.Siguiente();
+                libro = iterador.item();
+            }
+        }
 
         private static void Interpreter()
         {
@@ -295,22 +297,22 @@ namespace PatternsInAction
             }
         }
 
-        //private static void Composite()
-        //{
-        //    Cliente clienteFinal = new ClienteFinal();
-        //    clienteFinal.AgregarEditorial("Cliente Final 1");
+        private static void Composite()
+        {
+            Cliente clienteFinal = new ClienteFinal();
+            clienteFinal.AnadirLibro();
 
-        //    Cliente otroClienteFinal = new ClienteFinal();
-        //    otroClienteFinal.AgregarEditorial("Cliente Final 2");
-        //    otroClienteFinal.AnadirLibro();
+            Cliente otroClienteFinal = new ClienteFinal();
+            otroClienteFinal.AnadirLibro();
+            otroClienteFinal.AnadirLibro();
 
-        //    EditorialCliente editorialCliente = new EditorialCliente();
-        //    editorialCliente.AgregarEditorial(clienteFinal);
-        //    editorialCliente.AgregarEditorial(otroClienteFinal);
-        //    editorialCliente.AnadirLibro();
+            Cliente editorialCliente = new EditorialCliente();
+            editorialCliente.AgregarEditorial(clienteFinal);
+            editorialCliente.AgregarEditorial(otroClienteFinal);
+            editorialCliente.AnadirLibro();
 
-        //    Console.WriteLine($"Total pedidos clientes: { editorialCliente.CalcularPedido() }");
-        //}
+            Console.WriteLine($"Total pedidos clientes: { editorialCliente.CalcularPedido() }");
+        }
 
         private static void Decorator()
         {

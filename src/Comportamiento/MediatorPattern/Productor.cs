@@ -1,26 +1,26 @@
 ﻿using System;
+using System.Threading;
 
 namespace MediatorPattern
 {
     public class Productor
     {
-        private TorreDeControl _torreControl;
-        private int _id;
-        private static int num = 1;
-        public Productor(TorreDeControl torreControl)
+        private bool slotFull = false;
+        private int number;
+
+        public void Run(int num)
         {
-            _torreControl = torreControl;
-            _id = num++;
-        }
-        public void Run()
-        {
-            int num;
-            while (true)
-            {
-                num = new Random().Next(100, 999);
-                _torreControl.RecibeMensaje(num);
-                Console.WriteLine($"Productor {_id}");
+            while (slotFull == true) {
+                try {
+                    Thread.Sleep(1000);
+                }
+                catch (Exception e ) {
+                    Thread.ResetAbort();
+                }
             }
+            slotFull = true;
+            number = num;
+            notifyAll();
         }
     }
 }

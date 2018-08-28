@@ -26,9 +26,6 @@ namespace IteratorPattern
             }
         }
 
-        public TItem item()
-        {
-            return indice < contenido.Count ? contenido[indice] : null;
-        }
+        public TItem item() => indice < contenido.Count ? contenido[indice] : null;
     }
 }

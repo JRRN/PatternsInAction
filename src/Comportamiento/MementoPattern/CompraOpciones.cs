@@ -9,28 +9,29 @@ namespace MementoPattern
 
         public IMemento AgregaOpciones(OpcionBook bookOption)
         {
-            MementoImplementation result = new MementoImplementation
-            {
-                State = bookOption
-            };
+            MementoImplementation result = new MementoImplementation();
+            result.State = bookOptions;
 
-            IList<OpcionBook> bookOptionsNotSupported = bookOption.bookOptionNotSupported;
+            IList<OpcionBook> bookOptionsNotSupported = bookOption.BookOptionsNotSupported;
 
-            foreach (OpcionBook bookOption in bookOptionsNotSupported)
+            foreach (OpcionBook bOption in bookOptionsNotSupported)
             {
-                bookOptions.Remove(bookOption);
+                bookOptions.Remove(bOption);
             }
 
-            bookOptions.Add(bookOptions);
+            bookOptions.Add(bookOption);
 
             return result;
         }
 
         public void Anula(IMemento memento)
         {
-            MementoImplementation mementoImplementation = memento as MementoImplementation;
-            if (typeof(MementoImplementation) == null) return
-                bookOptions = MementoImplementation.State;
+            if (!(memento is MementoImplementation mementoImplementation))
+            {
+                return;
+            }
+
+            bookOptions = mementoImplementation.State;
         }
 
         public void Visualiza()

@@ -6,7 +6,7 @@ namespace MementoPattern
     public class OpcionBook
     {
         protected string _nombre;
-        public IList<OpcionBook> BookOptionsNotSupported { get; set; }
+        public IList<OpcionBook> BookOptionsNotSupported { get; protected set; }
 
         public OpcionBook(string nombre)
         {
@@ -23,9 +23,6 @@ namespace MementoPattern
             }
         }
 
-        public void Ver()
-        {
-            Console.WriteLine($"opcion : {_nombre}");
-        }
+        public void Ver() => Console.WriteLine($"opcion : {_nombre}");
     }
 }

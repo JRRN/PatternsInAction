@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IteratorPattern
 {
@@ -15,9 +11,7 @@ namespace IteratorPattern
             _descripcion = descripcion;
         }
 
-        public bool PalabraClaveValida(string palabraClave)
-        {
-            return _descripcion.Contains(palabraClave);
-        }
+        public bool PalabraClaveValida(string palabraClave) 
+            => _descripcion.IndexOf(palabraClave, StringComparison.Ordinal) != -1;
     }
 }
