@@ -16,7 +16,7 @@ namespace InterpreterPattern
             {
                 _indice++;
                 if (_indice == _fuente.Length) { _pieza = null; }
-                else if (_fuente[_indice] == '(' || _fuente[_indice] ==')')
+                else if (_fuente[_indice] == '(' || _fuente[_indice] == ')')
                 {
                     _pieza = _fuente.Substring(_indice, 1);
                     _indice++;
@@ -24,7 +24,7 @@ namespace InterpreterPattern
                 else
                 {
                     int inicio = _indice;
-                    while (_indice < _fuente.Length && _fuente[_indice] !=' ' && _fuente[_indice] != ')')
+                    while (_indice < _fuente.Length && _fuente[_indice] != ' ' && _fuente[_indice] != ')')
                     {
                         _indice++;
                     }
@@ -48,11 +48,9 @@ namespace InterpreterPattern
             if (_pieza == "(")
             {
                 SiguienteExpression();
-                resultado = OperatorX.Parsea();
-                if (_pieza == null)
-                    throw new Exception("Error de sintaxis");
-                if (_pieza != ")")
-                    throw new Exception("Error de sintaxis");
+                resultado = Parsea();
+                if (_pieza == null) { throw new Exception("Error de sintaxis"); }
+                if (_pieza != ")") { throw new Exception("Error de sintaxis"); }
                 SiguienteExpression();
             }
             else

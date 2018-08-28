@@ -4,17 +4,14 @@ namespace InterpreterPattern
 {
     public class Word : Expresion
     {
-        protected string _palabraClave;
+        protected string palabraClave;
 
         public Word(string palabraClave)
         {
-            _palabraClave = palabraClave;
+            this.palabraClave = palabraClave;
         }
 
-        public override bool Evalua(string descripcion)
-        {
-            return descripcion.IndexOf(_palabraClave) != -1;
-        }
+        public override bool Evalua(string descripcion) => descripcion.IndexOf(palabraClave) != -1;
         public new static Expresion Parsea()
         {
             Expresion resultado = new Word(_pieza);
