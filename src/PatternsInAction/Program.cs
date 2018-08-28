@@ -19,6 +19,8 @@ using FactoryMethodPattern;
 using FlyweightPattern;
 using MementoPattern;
 using PrototypePattern;
+using SingletonPattern;
+using DocumentosVacios = PrototypePattern.DocumentosVacios;
 using Pedido = TemplateMethodPattern.Pedido;
 using TipoLibroEnum = BridgePattern.TipoLibroEnum;
 
@@ -47,7 +49,7 @@ namespace PatternsInAction
             Console.WriteLine("Facade Pattern"); Facade();
             Console.WriteLine("Flyweight Pattern"); Flyweight();
             //Console.WriteLine("Proxy Pattern"); Proxy();
-            //Console.WriteLine("Singleton Pattern"); Singleton();
+            Console.WriteLine("Singleton Pattern"); Singleton();
             Console.WriteLine("Builder Pattern"); Builder();
             Console.WriteLine("Factory Method Pattern"); FactoryMethod();
             Console.WriteLine("Prototype Pattern"); Prototype();
@@ -99,10 +101,13 @@ namespace PatternsInAction
 
         private static void Singleton()
         {
-            //EditorialSingleton laEditorial = EditorialSingleton.Instance();
-            //laEditorial.nombreEditorial = "JRRN Publicaciones";
-            //laEditorial.ubicacion = "Barcelona";
-            //laEditorial.fechaEditorial = new DateTime.Year(1981);
+            EditorialSingleton laEditorial = EditorialSingleton.Instance();
+            laEditorial.nombreEditorial = "JRRN Publicaciones";
+            laEditorial.ubicacion = "Barcelona";
+            laEditorial.fechaEditorial = new DateTime(2018,05,11);
+
+            EditorialSingleton _laEditorial = EditorialSingleton.Instance();
+            _laEditorial.Visualiza();
         }
 
 
@@ -242,28 +247,27 @@ namespace PatternsInAction
 
         private static void Interpreter()
         {
-            Expresion expresionConsulta = null;
-            Console.Write("Introduzca su consulta: ");
-            string consulta = Console.ReadLine();
-            try
-            {
-                expresionConsulta = Expresion.Analiza(consulta);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                expresionConsulta = null;
-            }
-            if (expresionConsulta != null)
-            {
-                Console.WriteLine("Introduzca la descripción: ");
-                string descripcion = Console.ReadLine();
-                Console.WriteLine(expresionConsulta.Evalua(descripcion)
-                    ? "La descripción responde a la consulta"
-                    : "La descripción no responde a la consulta");
-            }
+            //Expresion expresionConsulta = null;
+            //Console.Write("Introduzca su consulta: ");
+            //string consulta = Console.ReadLine();
+            //try
+            //{
+            //    expresionConsulta = Expresion.Analiza(consulta);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //    expresionConsulta = null;
+            //}
+            //if (expresionConsulta != null)
+            //{
+            //    Console.WriteLine("Introduzca la descripción: ");
+            //    string descripcion = Console.ReadLine();
+            //    Console.WriteLine(expresionConsulta.Evalua(descripcion)
+            //        ? "La descripción responde a la consulta"
+            //        : "La descripción no responde a la consulta");
+            //}
         }
-
 
         private static void Adapter()
         {
@@ -339,8 +343,8 @@ namespace PatternsInAction
             DeterminaOpcion opcion = new DeterminaOpcion();
             LibroPedido libroPedido = new LibroPedido();
 
-            libroPedido.agregaOpcionLibro(FlyweightPattern.TipoLibroEnum.Anillas, 10, opcion);
-            libroPedido.agregaOpcionLibro(FlyweightPattern.TipoLibroEnum.Encolado, 30, opcion);
+            libroPedido.AgregaOpcionLibro(FlyweightPattern.TipoLibroEnum.Anillas, 10, opcion);
+            libroPedido.AgregaOpcionLibro(FlyweightPattern.TipoLibroEnum.Encolado, 30, opcion);
 
             libroPedido.MuestraOpciones();
         }

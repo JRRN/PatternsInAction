@@ -94,6 +94,10 @@
       <Project>{FB49FFB0-F3E4-430C-9CA3-D96D4E3A01E4}</Project>
       <Name>PrototypePattern</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Construccion\SingletonPattern\SingletonPattern.csproj">
+      <Project>{004DA3F5-DAFD-409F-B986-00214AA597BC}</Project>
+      <Name>SingletonPattern</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Estructura\AdapterPattern\AdapterPattern.csproj">
       <Project>{64B5B9C3-45D3-47BC-AFC4-12F0E9BC335C}</Project>
       <Name>AdapterPattern</Name>

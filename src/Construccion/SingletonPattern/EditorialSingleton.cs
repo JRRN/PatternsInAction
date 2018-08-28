@@ -10,10 +10,8 @@ namespace SingletonPattern
         private static EditorialSingleton _instance = null;
 
         private EditorialSingleton() { }
-        public static EditorialSingleton Instance()
-        {
-            return _instance ?? (_instance = new EditorialSingleton());
-        }
+        public static EditorialSingleton Instance() => _instance ?? (_instance = new EditorialSingleton());
+
         public void Visualiza()
         {
             Console.WriteLine($"Editorial:  {nombreEditorial}");

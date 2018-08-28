@@ -11,17 +11,16 @@ namespace FlyweightPattern
         public OpcionLibro(TipoLibroEnum tipoLibro)
         {
             _tipoLibro = tipoLibro;
-            _grosorPapel = getGrosorByTipoLibro((int)tipoLibro);
-            _tapa = getTapaByTipoLibro((int)tipoLibro);
+            _grosorPapel = GetGrosorByTipoLibro((int)tipoLibro);
+            _tapa = GetTapaByTipoLibro((int)tipoLibro);
         }
 
-        public void VerOpcionesLibro()
-        {
-            Console.WriteLine(
-                $"Libro con {_tapa} y grosor de papel {_grosorPapel} para el tipo de libro selecionado {_tipoLibro}");
-        }
+        public void VerOpcionesLibro() 
+            => Console.WriteLine(
+            $"Libro con tapa {_tapa} y grosor de papel {_grosorPapel} " +
+            $"para el tipo de libro selecionado {_tipoLibro}");
 
-        private int getGrosorByTipoLibro(int tipoLibro)
+        private int GetGrosorByTipoLibro(int tipoLibro)
         {
             switch (tipoLibro)
             {
@@ -34,7 +33,7 @@ namespace FlyweightPattern
             return 90; //default
         }
 
-        private string getTapaByTipoLibro(int tipoLibro)
+        private string GetTapaByTipoLibro(int tipoLibro)
         {
             switch (tipoLibro)
             {

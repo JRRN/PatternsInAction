@@ -8,7 +8,7 @@ namespace FlyweightPattern
         protected IList<OpcionLibro> opcionLibro = new List<OpcionLibro>();
         protected IList<int> precioVenta = new List<int>();
 
-        public void agregaOpcionLibro(TipoLibroEnum tipoLibro, int precio, DeterminaOpcion opcion)
+        public void AgregaOpcionLibro(TipoLibroEnum tipoLibro, int precio, DeterminaOpcion opcion)
         {
             opcionLibro.Add(DeterminaOpcion.GetOpcionesLibro(tipoLibro));
             precioVenta.Add(precio);
