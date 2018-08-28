@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Descripcion.cs" />
+    <Compile Include="Datos.cs" />
     <Compile Include="DescripcionProxy.cs" />
     <Compile Include="IBook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

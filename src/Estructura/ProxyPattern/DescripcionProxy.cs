@@ -4,17 +4,18 @@ namespace ProxyPattern
 {
     public class DescripcionProxy : IBook
     {
-        protected IBook book = null;
-        protected string descripcion = "Mostrar descripción";
+        protected Datos book = null;
+        protected string descripcion = "Desccripción Simple";
 
         public void CargaDescripcion()
         {
             if (book == null)
             {
-                book = new DescripcionProxy();
+                book = new Datos();
                 book.CargaDescripcion();
             }
-            book.CargaDescripcion();
+            else { book.CargaDescripcion(); }
+
         }
 
         public void Renderiza()
@@ -29,10 +30,6 @@ namespace ProxyPattern
             }
         }
 
-        public void Renderiza(string descripcion)
-        {
-            Console.WriteLine($"Mostrando descripción {descripcion}");
-        }
-
+        public void Renderiza(string descripcion) => Console.WriteLine($"{descripcion}");
     }
 }

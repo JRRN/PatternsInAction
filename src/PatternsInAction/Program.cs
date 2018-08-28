@@ -3,6 +3,7 @@ using ObserverPattern;
 using StatePattern;
 using StrategyPattern;
 using System;
+using AbstractFactoryPattern;
 using AdapterPattern;
 using BridgePattern;
 using IteratorPattern;
@@ -19,7 +20,9 @@ using FactoryMethodPattern;
 using FlyweightPattern;
 using MementoPattern;
 using PrototypePattern;
+using ProxyPattern;
 using SingletonPattern;
+using Book = ObserverPattern.Book;
 using DocumentosVacios = PrototypePattern.DocumentosVacios;
 using Pedido = TemplateMethodPattern.Pedido;
 using TipoLibroEnum = BridgePattern.TipoLibroEnum;
@@ -34,25 +37,25 @@ namespace PatternsInAction
             VisitorPattern();
             Console.WriteLine("Template Method Pattern"); TemplateMethodPattern();
 
-            Console.WriteLine("State Patterns"); StatePattern();
-            Console.WriteLine("Strategy Pattern"); StrategyPattern();
-            Console.WriteLine("Observer Pattern"); Observer();
-            Console.WriteLine("Memento Pattern"); Memento();
-            //Console.WriteLine("Mediator Pattern"); Mediator();
-            Console.WriteLine("Iterator Pattern"); Iterator();
-
-            Console.WriteLine("Interpreter Pattern"); Interpreter();
-            Console.WriteLine("Adapter Pattern");Adapter();
-            Console.WriteLine("Bridge Pattern"); Bridge();
-            Console.WriteLine("Composite Pattern"); Composite();
-            Console.WriteLine("Decorator Pattern"); Decorator();
-            Console.WriteLine("Facade Pattern"); Facade();
-            Console.WriteLine("Flyweight Pattern"); Flyweight();
+            //Console.WriteLine("State Patterns"); StatePattern();
+            //Console.WriteLine("Strategy Pattern"); StrategyPattern();
+            //Console.WriteLine("Observer Pattern"); Observer();
+            //Console.WriteLine("Memento Pattern"); Memento();
+            //Console.WriteLine("Abstract Factory Pattern"); AbstractFactory();
+            ////Console.WriteLine("Mediator Pattern"); Mediator();
+            //Console.WriteLine("Iterator Pattern"); Iterator();
+            //Console.WriteLine("Interpreter Pattern"); Interpreter();
+            //Console.WriteLine("Adapter Pattern");Adapter();
+            //Console.WriteLine("Bridge Pattern"); Bridge();
+            //Console.WriteLine("Composite Pattern"); Composite();
+            //Console.WriteLine("Decorator Pattern"); Decorator();
+            //Console.WriteLine("Facade Pattern"); Facade();
+            //Console.WriteLine("Flyweight Pattern"); Flyweight();
             //Console.WriteLine("Proxy Pattern"); Proxy();
-            Console.WriteLine("Singleton Pattern"); Singleton();
-            Console.WriteLine("Builder Pattern"); Builder();
-            Console.WriteLine("Factory Method Pattern"); FactoryMethod();
-            Console.WriteLine("Prototype Pattern"); Prototype();
+            //Console.WriteLine("Singleton Pattern"); Singleton();
+            //Console.WriteLine("Builder Pattern"); Builder();
+            //Console.WriteLine("Factory Method Pattern"); FactoryMethod();
+            //Console.WriteLine("Prototype Pattern"); Prototype();
 
             Console.ReadLine();
         }
@@ -109,7 +112,6 @@ namespace PatternsInAction
             EditorialSingleton _laEditorial = EditorialSingleton.Instance();
             _laEditorial.Visualiza();
         }
-
 
         private static void VisitorPattern()
         {
@@ -349,13 +351,38 @@ namespace PatternsInAction
             libroPedido.MuestraOpciones();
         }
 
-        //private static void Proxy()
-        //{
-        //    IBook book = new DescripcionProxy();
+        private static void Proxy()
+        {
+            IBook book = new DescripcionProxy();
 
-        //    book.Renderiza();
-        //    book.CargaDescripcion();
-        //    book.Renderiza();
-        //}
+            book.Renderiza();
+            book.CargaDescripcion();
+        }
+
+        private static void AbstractFactory()
+        {
+            int nBooks = 3;
+            int nMagazines = 2;
+
+            IFactory fabrica  = new Factory();
+            AbstractFactoryPattern.Book[] books = new AbstractFactoryPattern.Book[nBooks];
+            AbstractFactoryPattern.Magazine[] magazines = new AbstractFactoryPattern.Magazine [nMagazines];
+
+            for (int index = 0; index < nBooks; index++)
+            {
+                var formatType = index == 0 ? FormatType.Paper : FormatType.Media;
+                books[index] = fabrica.NewBook("Papel","Autor", 1980, formatType);
+            }
+                
+            for (int index = 0; index < nMagazines; index++){
+                var formatType = index == 0 ? FormatType.Paper : FormatType.Media;
+                magazines[index] = fabrica.NewMagazine("Papel", 1981, formatType);
+            }
+           
+            foreach (AbstractFactoryPattern.Book book in books)
+                book.MostrarCaracteristicas();
+            foreach (AbstractFactoryPattern.Magazine magazine in magazines)
+                magazine.MostrarCaracteristicas();
+        }
     }
 }

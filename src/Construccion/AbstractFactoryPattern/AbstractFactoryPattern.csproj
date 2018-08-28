@@ -42,10 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
-    <Compile Include="GenerateMediaBook.cs" />
-    <Compile Include="GeneratePaperBook.cs" />
+    <Compile Include="FormatType.cs" />
+    <Compile Include="IFactory.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Magazine.cs" />
     <Compile Include="MediaBook.cs" />
+    <Compile Include="MediaMagazine.cs" />
     <Compile Include="PaperBook.cs" />
+    <Compile Include="PaperMagazine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

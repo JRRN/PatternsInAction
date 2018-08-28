@@ -82,6 +82,10 @@
       <Project>{C3265705-6AE3-45EF-BCF1-09E651DE66BA}</Project>
       <Name>VisitorPattern</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Construccion\AbstractFactoryPattern\AbstractFactoryPattern.csproj">
+      <Project>{E180F60A-A5B3-48A4-B6A1-38C3C829B415}</Project>
+      <Name>AbstractFactoryPattern</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Construccion\BuilderPattern\BuilderPattern.csproj">
       <Project>{04DBDCB5-1D9C-4588-859F-49EF9006643F}</Project>
       <Name>BuilderPattern</Name>
@@ -121,6 +125,10 @@
     <ProjectReference Include="..\Estructura\FlyweightPattern\FlyweightPattern.csproj">
       <Project>{C99B66F8-4190-483E-B0BA-3D6DA1BDE3C7}</Project>
       <Name>FlyweightPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Estructura\ProxyPattern\ProxyPattern.csproj">
+      <Project>{EC6684F0-17B6-4FD1-B9B0-980BDEF09846}</Project>
+      <Name>ProxyPattern</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
