@@ -2,21 +2,21 @@
 {
     public class OperatorX : BinaryOperator
     {
-        public OperatorX(Expresion leftOperator, Expresion rightOperator)
-            : base(leftOperator, rightOperator) { }
+        public OperatorX(Expresion leftExpresion, Expresion rightExpresion)
+            : base(leftExpresion, rightExpresion) { }
 
         public override bool Evalua(string descripcion)
         {
-            return _leftOperator.Evalua(descripcion) || _rightOperator.Evalua(descripcion);
+            return _leftExpresion.Evalua(descripcion) || _rightExpresion.Evalua(descripcion);
         }
 
-        public new static Expresion Parse()
+        public static Expresion parsea()
         {
-            Expresion leftResult = OperatorY.Parse();
-            while (libro != null && libro == "o")
+            Expresion leftResult = OperatorY.Parsea();
+            while (_pieza != null && _pieza == "o")
             {
-                NextBook();
-                Expresion rightResult = OperatorY.Parse();
+                SiguienteExpression();
+                Expresion rightResult = OperatorY.Parsea();
                 leftResult = new OperatorX(leftResult, rightResult);
             }
             return leftResult;

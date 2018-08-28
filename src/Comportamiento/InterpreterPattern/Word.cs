@@ -4,25 +4,22 @@ namespace InterpreterPattern
 {
     public class Word : Expresion
     {
-        protected string _word;
+        protected string _palabraClave;
 
-        public Word(string word)
+        public Word(string palabraClave)
         {
-            _word = word;
+            _palabraClave = palabraClave;
         }
 
         public override bool Evalua(string descripcion)
         {
-            return descripcion.IndexOf(_word, StringComparison.Ordinal) != -1;
+            return descripcion.IndexOf(_palabraClave) != -1;
         }
-
-        public new static Expresion Parse()
+        public new static Expresion Parsea()
         {
-            Expresion result;
-            result = new Word("pieza");
-            NextBook();
-            return result;
+            Expresion resultado = new Word(_pieza);
+            SiguienteExpression();
+            return resultado;
         }
-
     }
 }

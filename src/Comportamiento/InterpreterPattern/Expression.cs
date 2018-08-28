@@ -6,60 +6,58 @@ namespace InterpreterPattern
     {
         public abstract bool Evalua(string descripcion);
 
-        protected static string origen;
-        protected static int position;
-        protected static string libro;
+        protected static string _fuente;
+        protected static int _indice;
+        protected static string _pieza;
 
-        protected static void NextBook()
+        protected static void SiguienteExpression()
         {
-            while (position < origen.Length && origen[position] == ' ')
+            while (_indice < _fuente.Length && _fuente[_indice] == ' ')
             {
-                position++;
-                if (position == origen.Length)
+                _indice++;
+                if (_indice == _fuente.Length) { _pieza = null; }
+                else if (_fuente[_indice] == '(' || _fuente[_indice] ==')')
                 {
-                    libro = null;
-                }
-                else if (origen[position] == '(' || origen[position] == ')')
-                {
-                    libro = origen.Substring(position, 1);
-                    position++;
+                    _pieza = _fuente.Substring(_indice, 1);
+                    _indice++;
                 }
                 else
                 {
-                    int initPosition = position;
-                    while (position < origen.Length && origen[position] != ' ' && origen[position] != ')') {
-                        position++;
-                        libro = origen.Substring(initPosition, position - initPosition);
+                    int inicio = _indice;
+                    while (_indice < _fuente.Length && _fuente[_indice] !=' ' && _fuente[_indice] != ')')
+                    {
+                        _indice++;
                     }
+
+                    _pieza = _fuente.Substring(inicio, _indice - inicio);
                 }
             }
         }
-        public static Expresion Analiza(string origen)
+
+        public static Expresion Analiza(string fuente)
         {
-            Expresion.origen = origen;
-            position = 0;
-            NextBook();
-            return OperatorX.Parse();
+            _fuente = fuente;
+            _indice = 0;
+            SiguienteExpression();
+            return OperatorX.parsea();
         }
 
-        public static Expresion Parse()
+        public static Expresion Parsea()
         {
-            Expresion result;
-            if (libro == "(")
+            Expresion resultado;
+            if (_pieza == "(")
             {
-                NextBook();
-                result = OperatorX.Parse();
-                if (libro == null)
+                SiguienteExpression();
+                resultado = OperatorX.Parsea();
+                if (_pieza == null)
                     throw new Exception("Error de sintaxis");
-                if (libro != ")")
+                if (_pieza != ")")
                     throw new Exception("Error de sintaxis");
-                NextBook();
+                SiguienteExpression();
             }
             else
-            {
-                result = OperatorY.Parse();
-            }
-            return result;
+                resultado = Word.Parsea();
+            return resultado;
         }
     }
 }

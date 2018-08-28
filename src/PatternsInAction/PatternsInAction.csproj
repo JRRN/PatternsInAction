@@ -82,6 +82,18 @@
       <Project>{C3265705-6AE3-45EF-BCF1-09E651DE66BA}</Project>
       <Name>VisitorPattern</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Construccion\BuilderPattern\BuilderPattern.csproj">
+      <Project>{04DBDCB5-1D9C-4588-859F-49EF9006643F}</Project>
+      <Name>BuilderPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Construccion\FactoryMethodPattern\FactoryMethodPattern.csproj">
+      <Project>{FE143821-CCC7-49E2-A1D6-B9AE9EEDD76D}</Project>
+      <Name>FactoryMethodPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Construccion\PrototypePattern\PrototypePattern.csproj">
+      <Project>{FB49FFB0-F3E4-430C-9CA3-D96D4E3A01E4}</Project>
+      <Name>PrototypePattern</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Estructura\AdapterPattern\AdapterPattern.csproj">
       <Project>{64B5B9C3-45D3-47BC-AFC4-12F0E9BC335C}</Project>
       <Name>AdapterPattern</Name>

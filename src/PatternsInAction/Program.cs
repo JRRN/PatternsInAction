@@ -10,10 +10,14 @@ using TemplateMethodPattern;
 using VisitorPattern;
 using InterpreterPattern;
 using BridgePattern;
+using BuilderPattern;
 //using CompositePattern;
 using DecoratorPattern;
 using FacadePattern;
+using FactoryMethodPattern;
 using FlyweightPattern;
+using PrototypePattern;
+using Pedido = TemplateMethodPattern.Pedido;
 using TipoLibroEnum = BridgePattern.TipoLibroEnum;
 
 
@@ -33,7 +37,7 @@ namespace PatternsInAction
             //Console.WriteLine(); Mediator();
             //Console.WriteLine(); Iterator();
 
-            //Console.WriteLine(); Interpreter();
+            Console.WriteLine(); Interpreter();
             Console.WriteLine();Adapter();
             Console.WriteLine(); Bridge();
             //Console.WriteLine(); Composite();
@@ -41,8 +45,62 @@ namespace PatternsInAction
             Console.WriteLine(); Facade();
             Console.WriteLine(); Flyweight();
             //Console.WriteLine(); Proxy();
+            //Console.WriteLine(); Singleton();
+            Console.WriteLine(); Builder();
+            Console.WriteLine(); FactoryMethod();
+            Console.WriteLine(); Prototype();
 
             Console.ReadLine();
+        }
+
+        private static void Prototype()
+        {
+            DocumentosVacios documentosVacios = DocumentosVacios.Instance();
+            documentosVacios.Incluye(new PedidoPrototype());
+            documentosVacios.Incluye(new FacturaPrototype());
+            documentosVacios.Incluye(new LibroDigital());
+            DocumentosCliente documentoCliente = new DocumentosCliente("Un usuario");
+            DocumentosCliente documentoCliente2 = new DocumentosCliente("Otro Usuario");
+            documentoCliente.Visualiza();
+            documentoCliente2.Visualiza();
+        }
+
+        private static void FactoryMethod()
+        {
+            PedidoTargeta pedidoEfectivo = new PedidoTargeta(100);
+            if (pedidoEfectivo.Valida()) { pedidoEfectivo.Paga();}
+            
+            PedidoTargeta pedidoTargetaNoValido = new PedidoTargeta(1000);
+            if (pedidoTargetaNoValido.Valida()) { pedidoTargetaNoValido.Paga(); }
+
+            PedidoTargeta pedidoTargetaValido = new PedidoTargeta(50);
+            if (pedidoTargetaValido.Valida()) { pedidoTargetaValido.Paga(); }
+        }
+
+        private static void Builder()
+        {
+            ConstructorDocumentacion constructor;
+            Console.WriteLine("Desea generar documentación HTML (1) o PDF (2):");
+            string seleccion = Console.ReadLine();
+            if (seleccion == "1")
+            {
+                constructor = new ConstructorDocumentacionHtml();
+            }
+            else
+            {
+                constructor = new ConstructorDocumentacionPdf();
+            }
+            Vendedor vendedor = new Vendedor(constructor);
+            Documentacion documentacion = vendedor.Construye("JRRN");
+            documentacion.Imprime();
+        }
+
+        private static void Singleton()
+        {
+            //EditorialSingleton laEditorial = EditorialSingleton.Instance();
+            //laEditorial.nombreEditorial = "JRRN Publicaciones";
+            //laEditorial.ubicacion = "Barcelona";
+            //laEditorial.fechaEditorial = new DateTime.Year(1981);
         }
 
 
@@ -180,29 +238,29 @@ namespace PatternsInAction
         //    }
         //}
 
-        //private static void Interpreter()
-        //{
-        //    Expresion expresionConsulta = null;
-        //    Console.Write("Introduzca su consulta: ");
-        //    string consulta = Console.ReadLine();
-        //    try
-        //    {
-        //        expresionConsulta = Expresion.Analiza(consulta);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //        expresionConsulta = null;
-        //    }
-        //    if (expresionConsulta != null)
-        //    {
-        //        Console.WriteLine("Introduzca la descripción de un libro: ");
-        //        string descripcion = Console.ReadLine();
-        //        Console.WriteLine(expresionConsulta.Evalua(descripcion)
-        //            ? "La descripción responde a la consulta"
-        //            : "La descripción no responde a la consulta");
-        //    }
-        //}
+        private static void Interpreter()
+        {
+            Expresion expresionConsulta = null;
+            Console.Write("Introduzca su consulta: ");
+            string consulta = Console.ReadLine();
+            try
+            {
+                expresionConsulta = Expresion.Analiza(consulta);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                expresionConsulta = null;
+            }
+            if (expresionConsulta != null)
+            {
+                Console.WriteLine("Introduzca la descripción: ");
+                string descripcion = Console.ReadLine();
+                Console.WriteLine(expresionConsulta.Evalua(descripcion)
+                    ? "La descripción responde a la consulta"
+                    : "La descripción no responde a la consulta");
+            }
+        }
 
 
         private static void Adapter()
