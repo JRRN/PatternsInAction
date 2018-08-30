@@ -10,7 +10,7 @@
         {
             this.Nombre = nombre;
             this.Email = email;
-            this.Direccion = direccion;
+            Direccion = direccion;
         }
 
         public abstract bool AgregarEditorialFilial(Editorial filial);

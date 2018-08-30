@@ -43,8 +43,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Construccion\AbstractFactory.cs" />
+    <Compile Include="Estructura\Decorator.cs" />
+    <Compile Include="Estructura\Composite.cs" />
+    <Compile Include="Estructura\Bridge.cs" />
+    <Compile Include="Estructura\Adapter.cs" />
+    <Compile Include="BehavioralPatterns.cs" />
+    <Compile Include="Construccion\Builder.cs" />
+    <Compile Include="CreationalPatterns.cs" />
+    <Compile Include="Construccion\FactoryMethod.cs" />
+    <Compile Include="Comportamiento\Observer.cs" />
+    <Compile Include="Comportamiento\Memento.cs" />
+    <Compile Include="Comportamiento\Mediator.cs" />
+    <Compile Include="Comportamiento\Iterator.cs" />
+    <Compile Include="Comportamiento\Interpreter.cs" />
+    <Compile Include="Estructura\Facade.cs" />
+    <Compile Include="Estructura\Flyweight.cs" />
+    <Compile Include="Master\PatternsTypes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Construccion\Prototype.cs" />
+    <Compile Include="Construccion\Singleton.cs" />
+    <Compile Include="Comportamiento\State.cs" />
+    <Compile Include="Comportamiento\Strategy.cs" />
+    <Compile Include="Estructura\Proxy.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="StructuralPatterns.cs" />
+    <Compile Include="Comportamiento\Visitor.cs" />
+    <Compile Include="Comportamiento\TemplateMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -131,5 +157,6 @@
       <Name>ProxyPattern</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
