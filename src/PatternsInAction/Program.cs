@@ -32,7 +32,7 @@ namespace PatternsInAction
                     case "10": ExecutePattern(Facade.Show); break;
                     case "11": ExecutePattern(Flyweight.Show); break;
                     case "12": ExecutePattern(Proxy.Show); break;
-                    case "13": //ExecutePattern(() => ChainOfResponsability()); break;
+                    case "13": ExecutePattern(ChainOfResponsability.Show); break;
                     case "14": ExecutePattern(Interpreter.Show); break;
                     case "15": ExecutePattern(Iterator.Show); break;
                     case "16": ExecutePattern(Mediator.Show); break;

@@ -10,10 +10,7 @@ namespace ChainOfResponsabilityPattern
     {
         public BaseLibro siguiente { protected get; set; }
 
-        private static string DescripcionBase()
-        {
-            return "Descripción base: Es un libro.";
-        }
+        private string DescripcionBase() => "Descripción base : Es un libro.";
 
         protected abstract string descripcion { get; }
 

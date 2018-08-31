@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comportamiento\ChainOfResponsability.cs" />
     <Compile Include="Construccion\AbstractFactory.cs" />
     <Compile Include="Estructura\Decorator.cs" />
     <Compile Include="Estructura\Composite.cs" />
@@ -76,6 +77,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Comportamiento\ChainOfResponsabilityPattern\ChainOfResponsabilityPattern.csproj">
+      <Project>{FB3C62F6-BD55-4B2A-BE26-70AE4EBEB4B5}</Project>
+      <Name>ChainOfResponsabilityPattern</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Comportamiento\InterpreterPattern\InterpreterPattern.csproj">
       <Project>{0AA7F734-300E-4EF9-82C0-644D9E3AD4BE}</Project>
       <Name>InterpreterPattern</Name>

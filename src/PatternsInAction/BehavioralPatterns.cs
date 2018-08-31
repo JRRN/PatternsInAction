@@ -6,7 +6,7 @@ namespace PatternsInAction
     {
         public static void Show()
         {
-            //Console.WriteLine("13.Chain of Responsability Pattern");
+            Console.WriteLine("13.Chain of Responsability Pattern");
             Console.WriteLine("14.Interpreter Pattern");
             Console.WriteLine("15.Iterator Pattern");
             Console.WriteLine("17.Mediator Pattern");

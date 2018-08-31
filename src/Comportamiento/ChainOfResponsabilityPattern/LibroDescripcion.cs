@@ -11,6 +11,8 @@
             _libro = libro;
         }
 
-        protected override string descripcion => _libroDescripcion != null ? $"El libro {_libro} : {_libroDescripcion}" : null;
+        protected override string descripcion => _libroDescripcion != null 
+                                                  ? $@"El libro {_libro} 
+                                                  : {_libroDescripcion}" : null;
     }
 }
