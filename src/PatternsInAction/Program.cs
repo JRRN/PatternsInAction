@@ -36,7 +36,7 @@ namespace PatternsInAction
                     case "14": ExecutePattern(Interpreter.Show); break;
                     case "15": ExecutePattern(Iterator.Show); break;
                     case "16": ExecutePattern(Mediator.Show); break;
-                    case "17": //ExecutePattern(() => Command()); break;
+                    case "17": ExecutePattern(Command.Show); break;
                     case "18": ExecutePattern(Memento.Show); break;
                     case "19": ExecutePattern(Observer.Show); break;
                     case "20": ExecutePattern(State.Show); break;

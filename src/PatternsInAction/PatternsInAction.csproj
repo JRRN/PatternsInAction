@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comportamiento\ChainOfResponsability.cs" />
+    <Compile Include="Comportamiento\Command.cs" />
     <Compile Include="Construccion\AbstractFactory.cs" />
     <Compile Include="Estructura\Decorator.cs" />
     <Compile Include="Estructura\Composite.cs" />
@@ -80,6 +81,10 @@
     <ProjectReference Include="..\Comportamiento\ChainOfResponsabilityPattern\ChainOfResponsabilityPattern.csproj">
       <Project>{FB3C62F6-BD55-4B2A-BE26-70AE4EBEB4B5}</Project>
       <Name>ChainOfResponsabilityPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comportamiento\CommandPattern\CommandPattern.csproj">
+      <Project>{100C38DE-DEA6-43AD-B12D-0E7FC97F4A88}</Project>
+      <Name>CommandPattern</Name>
     </ProjectReference>
     <ProjectReference Include="..\Comportamiento\InterpreterPattern\InterpreterPattern.csproj">
       <Project>{0AA7F734-300E-4EF9-82C0-644D9E3AD4BE}</Project>

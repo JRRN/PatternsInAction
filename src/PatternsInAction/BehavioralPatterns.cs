@@ -9,8 +9,8 @@ namespace PatternsInAction
             Console.WriteLine("13.Chain of Responsability Pattern");
             Console.WriteLine("14.Interpreter Pattern");
             Console.WriteLine("15.Iterator Pattern");
-            Console.WriteLine("17.Mediator Pattern");
-            //Console.WriteLine("17.Command Pattern");
+            Console.WriteLine("16.Mediator Pattern");
+            Console.WriteLine("17.Command Pattern");
             Console.WriteLine("18.Memento Pattern");
             Console.WriteLine("19.Observer Pattern");
             Console.WriteLine("20.State Patterns");
